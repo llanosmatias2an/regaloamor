@@ -873,52 +873,48 @@
 
     <script>
       // ─── DATOS ───
-const challenges = [
-  {
-    type: "🔥 Acción",
-    text: "Démonos un beso lento donde más ganas tengamos durante 20 segundos.",
-  },
-  {
-    type: "🫦 Acción",
-    text: "Acerquémonos al oído y digamos algo que nunca nos animaríamos a mandar por mensaje.",
-  },
-  {
-    type: "💋 Acción",
-    text: "Perdámonos un rato en el cuello del otro hasta que alguno diga basta.",
-  },
-  {
-    type: "❤️ Acción",
-    text: "Abracémonos fuerte sin cortar el abrazo por 1 minuto.",
-  },
-  {
-    type: "💋 Acción",
-    text: "Probemos tres besos distintos: uno suave, uno intenso y uno peligroso.",
-  },
-  {
-    type: "🫦 Acción",
-    text: "Elijamos juntos una parte del cuerpo para dedicarle toda nuestra atención por 30 segundos.",
-  },
-  {
-    type: "💞 Verdad",
-    text: "¿Qué momento conmigo te gustaría repetir una y otra vez?",
-  },
-  {
-    type: "🔥 Acción",
-    text: "Quedémonos muy cerca sin besarnos hasta que alguno no aguante más.",
-  },
-  {
-    type: "🫦 Acción",
-    text: "Guiémonos mutuamente con las manos, pero sin hablar.",
-  },
-  {
-    type: "🔥 Acción",
-    text: "Sentémonos encima del otro durante un minuto sin distraernos con nada más.",
-  },
-         {
+      const challenges = [
+        {
+          type: "🔥 Acción",
+          text: "Démonos un beso lento donde más ganas tengamos durante 20 segundos.",
+        },
+        {
+          type: "💋 Acción",
+          text: "Perdámonos un rato en el cuello del otro hasta que alguno diga basta.",
+        },
+        {
+          type: "❤️ Acción",
+          text: "Abracémonos fuerte sin cortar el abrazo por 1 minuto.",
+        },
+        {
+          type: "💋 Acción",
+          text: "Probemos tres besos distintos: uno suave, uno intenso y uno peligroso.",
+        },
+        {
+          type: "🫦 Acción",
+          text: "Elijamos juntos una parte del cuerpo para dedicarle toda nuestra atención por 30 segundos.",
+        },
+        {
+          type: "💞 Verdad",
+          text: "¿Qué momento conmigo te gustaría repetir una y otra vez?",
+        },
+        {
+          type: "🔥 Acción",
+          text: "Quedémonos muy cerca sin besarnos hasta que alguno no aguante más.",
+        },
+        {
+          type: "🫦 Acción",
+          text: "Guiémonos mutuamente con las manos, pero sin hablar.",
+        },
+        {
+          type: "🔥 Acción",
+          text: "Sentémonos encima del otro durante un minuto sin distraernos con nada más.",
+        },
+        {
           type: "💞 Verdad",
           text: "¿Cuál fue el momento donde más sentiste conexión conmigo?",
-        }
-];
+        },
+      ];
       const TOTAL = 3;
       let spun = 0;
       let spinning = false;
@@ -1021,20 +1017,9 @@ const challenges = [
 
       function showChallenge() {
         let idx;
-        const GUARANTEED_IDX = 1; // "Susurrame al oído..."
-        const isLastSpin = usedIdx.length === TOTAL - 1;
-        const guaranteedUsed = usedIdx.includes(GUARANTEED_IDX);
-
-        if (isLastSpin && !guaranteedUsed) {
-          idx = GUARANTEED_IDX;
-        } else {
-          do {
-            idx = Math.floor(Math.random() * challenges.length);
-          } while (
-            (usedIdx.includes(idx) || idx === GUARANTEED_IDX) &&
-            usedIdx.length < challenges.length
-          );
-        }
+        do {
+          idx = Math.floor(Math.random() * challenges.length);
+        } while (usedIdx.includes(idx) && usedIdx.length < challenges.length);
         usedIdx.push(idx);
 
         const c = challenges[idx];
